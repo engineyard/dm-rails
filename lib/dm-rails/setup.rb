@@ -48,7 +48,7 @@ module Rails
     end
 
     def self.preload_models(app)
-      app.config.paths.app.models.each do |path|
+      app.config.paths["app/models"].each do |path|
         Dir.glob("#{path}/**/*.rb").sort.each { |file| require_dependency file }
       end
       finalize
