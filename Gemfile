@@ -2,25 +2,19 @@ require 'pathname'
 
 source 'http://rubygems.org'
 
+gemspec
+
 SOURCE         = ENV.fetch('SOURCE', :git).to_sym
 REPO_POSTFIX   = SOURCE == :path ? ''                                : '.git'
 DATAMAPPER     = SOURCE == :path ? Pathname(__FILE__).dirname.parent : 'http://github.com/datamapper'
-DM_VERSION     = '~> 1.1.0'
+DM_VERSION     = '~> 1.2.0'
 DO_VERSION     = '~> 0.10.6'
 DM_DO_ADAPTERS = %w[ sqlite postgres mysql oracle sqlserver ]
 
-gem 'dm-core', DM_VERSION, SOURCE => "#{DATAMAPPER}/dm-core#{REPO_POSTFIX}"
-gem 'actionpack',      '~> 3.0', :require => 'action_pack'
-gem 'dm-active_model', DM_VERSION, SOURCE => "#{DATAMAPPER}/dm-active_model#{REPO_POSTFIX}"
-gem 'railties',        '~> 3.0', :require => 'rails'
-
-group :development do
-
-  gem 'jeweler', '~> 1.5.2'
-  gem 'rake',    '~> 0.8.7'
-  gem 'rspec',   '~> 1.3.1'
-
-end
+gem 'dm-core', DM_VERSION# , SOURCE => "#{DATAMAPPER}/dm-core#{REPO_POSTFIX}"
+gem 'actionpack',      '~> 4.0', :require => 'action_pack'
+gem 'dm-active_model', DM_VERSION, git: "git://github.com/engineyard/dm-active_model", branch: "rails-4"# , SOURCE => "#{DATAMAPPER}/dm-active_model#{REPO_POSTFIX}"
+gem 'railties',        '~> 4.0', :require => 'rails'
 
 platforms :mri_18 do
   group :quality do
@@ -47,10 +41,10 @@ group :datamapper do
       gem "do_#{adapter}", DO_VERSION, do_options.dup
     end
 
-    gem 'dm-do-adapter', DM_VERSION, SOURCE => "#{DATAMAPPER}/dm-do-adapter#{REPO_POSTFIX}"
+    gem 'dm-do-adapter', DM_VERSION#, SOURCE => "#{DATAMAPPER}/dm-do-adapter#{REPO_POSTFIX}"
   end
 
-  gem 'dm-migrations', DM_VERSION, SOURCE => "#{DATAMAPPER}/dm-migrations#{REPO_POSTFIX}"
+  gem 'dm-migrations', DM_VERSION#, SOURCE => "#{DATAMAPPER}/dm-migrations#{REPO_POSTFIX}"
 
   adapters.each do |adapter|
     gem "dm-#{adapter}-adapter", DM_VERSION, SOURCE => "#{DATAMAPPER}/dm-#{adapter}-adapter#{REPO_POSTFIX}"

@@ -4,6 +4,8 @@ require 'dm-core/spec/lib/adapter_helpers'
 require 'dm-core/spec/lib/spec_helper'
 require 'dm-core/spec/lib/pending_helpers'
 
+Bundler.require(:developer)
+
 DataMapper::Spec.setup
 DataMapper.finalize
 
