@@ -26,7 +26,6 @@ Gem::Specification.new do |s|
     "dm-rails.gemspec",
     "lib/dm-rails.rb",
     "lib/dm-rails/configuration.rb",
-    "lib/dm-rails/mass_assignment_security.rb",
     "lib/dm-rails/middleware/identity_map.rb",
     "lib/dm-rails/multiparameter_attributes.rb",
     "lib/dm-rails/railtie.rb",
@@ -49,7 +48,6 @@ Gem::Specification.new do |s|
     "spec/models/topic.rb",
     "spec/spec.opts",
     "spec/spec_helper.rb",
-    "spec/unit/mass_assignment_security_spec.rb",
     "spec/unit/multiparameter_attributes_spec.rb",
     "tasks/clean.rake",
     "tasks/yard.rake",
@@ -64,7 +62,6 @@ Gem::Specification.new do |s|
     "spec/models/fake.rb",
     "spec/models/topic.rb",
     "spec/spec_helper.rb",
-    "spec/unit/mass_assignment_security_spec.rb",
     "spec/unit/multiparameter_attributes_spec.rb"
   ]
 
